@@ -188,8 +188,7 @@ public class CommoditySearchField {
                 int i=e.getButton();
                 if (i==MouseEvent.BUTTON1){
 
-
-                    String s=CommoditySearchFieldOption.noZero.getText();
+                    String s=CommoditySearchFieldOption.noZero.getText(); //获取非零选项内容
                     if(s.equals("不显示 0 库存产品")){
                         topVolume6Table=tv6t.topVolume6Table("SELECT * FROM kcb GROUP BY tradeName ORDER BY volume DESC LIMIT 6");
                     }else {

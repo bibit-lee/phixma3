@@ -219,6 +219,8 @@ public class CommoditySearchFieldOption {
                 JLayeredView.jLayeredView.add(JLayeredView.commoditySearch,Integer.valueOf(600));
                 JLayeredView.jLayeredView.add(JLayeredView.commoditySearchFieldOption,Integer.valueOf(500));
                 JLayeredView.jLayeredView.add(JLayeredView.commodityViewPanel,Integer.valueOf(400));
+
+                CommoditySearchNew.commodityNewTextField.requestFocus();
             }
         });
 

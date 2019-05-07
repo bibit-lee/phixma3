@@ -120,7 +120,7 @@ public class JLayeredView {
         //新增商品面板
         CommodityNewPanel cn=new CommodityNewPanel();
         commodityNew=cn.commodityNew();
-        commodityNew.setBounds(ScreenSize.scr_width*30/100,ScreenSize.scr_height*10/100,ScreenSize.scr_width*40/100,ScreenSize.scr_height*60/100);
+        commodityNew.setBounds(ScreenSize.scr_width*5/100,0, ScreenSize.scr_width*90/100,ScreenSize.scr_height*90/100);
 
         /*/产品页面*/
 

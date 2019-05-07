@@ -12,5 +12,6 @@
     <file url="file://$PROJECT_DIR$/src/views/jlayeredCommodity/commoditySet/DisPlayColumn.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/views/jlayeredItem/CommoditySearchField.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/views/jlayeredItem/CommoditySearchFieldOption.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/views/jlayeredItem/CommoditySearchNew.java" dialect="MySQL" />
   </component>
 </project>

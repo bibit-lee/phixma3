@@ -5,6 +5,7 @@ import item.Fonts;
 import item.ScreenSize;
 import mainFrame.JLayeredView;
 import tables.tableItem.CommodityTableModel;
+import views.jlayeredCommodity.commoditySet.ClassBinding;
 import views.jlayeredCommodity.commoditySet.DisPlayColumn;
 
 import javax.swing.*;
@@ -15,6 +16,8 @@ import java.awt.event.MouseEvent;
 
 public class CommoditySetPanel {
     public static JPanel disPlayColumn;
+    public static JPanel classBinding;
+
     public JPanel commoditySetPanel(){
         JPanel commoditySetPanel;
 
@@ -31,8 +34,13 @@ public class CommoditySetPanel {
         disPlayColumn=dsc.disPlayColumn();
         disPlayColumn.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
 
+        ClassBinding cbd=new ClassBinding();
+        classBinding=cbd.classBinding();
+        classBinding.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
+
         commoditySetPanel.add(exit);
         commoditySetPanel.add(disPlayColumn);
+        commoditySetPanel.add(classBinding);
 
         springLayout.putConstraint(SpringLayout.NORTH,exit,ScreenSize.scr_height/100,SpringLayout.NORTH,commoditySetPanel);
         springLayout.putConstraint(SpringLayout.EAST,exit,-ScreenSize.scr_width/100,SpringLayout.EAST,commoditySetPanel);
@@ -40,6 +48,10 @@ public class CommoditySetPanel {
         springLayout.putConstraint(SpringLayout.NORTH,disPlayColumn,0,SpringLayout.SOUTH,exit);
         springLayout.putConstraint(SpringLayout.WEST,disPlayColumn,0,SpringLayout.WEST,commoditySetPanel);
         springLayout.putConstraint(SpringLayout.EAST,disPlayColumn,0,SpringLayout.EAST,commoditySetPanel);
+
+        springLayout.putConstraint(SpringLayout.NORTH,classBinding,0,SpringLayout.SOUTH,disPlayColumn);
+        springLayout.putConstraint(SpringLayout.WEST,classBinding,0,SpringLayout.WEST,commoditySetPanel);
+        springLayout.putConstraint(SpringLayout.EAST,classBinding,0,SpringLayout.EAST,commoditySetPanel);
 
 
 

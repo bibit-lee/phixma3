@@ -2,13 +2,21 @@ package views.jlayeredCommodity.commodityNew;
 
 
 import item.Fonts;
+import views.jlayeredCommodity.CommodityNewPanel;
+import views.jlayeredItem.CommoditySearchNew;
+
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 
 //新增商品时品牌属性等输入选择框
 
 public class CommodityNewComboBox {
+
+    public static JLabel comboBoxLabel;
 
     public JComboBox commodityNewComboBox(){
 
@@ -26,6 +34,18 @@ public class CommodityNewComboBox {
                 return selectButton;
             }
         });
+
+        commodityNewComboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange()== ItemEvent.SELECTED){
+                    String s=(String)commodityNewComboBox.getSelectedItem();
+
+                }
+            }
+        });
+
+
 
         return commodityNewComboBox;
     }

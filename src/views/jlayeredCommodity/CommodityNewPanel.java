@@ -16,6 +16,8 @@ public class CommodityNewPanel {
     public static JPanel commodityNew;
     public static JPanel commoditySearchNew;
     public static JPanel selectionA;
+    public static JPanel selectionB;
+    public static JPanel selectionC;
     public static JComboBox nameInput;
     public static JComboBox brandInput;
     public static JComboBox originInput;
@@ -24,11 +26,13 @@ public class CommodityNewPanel {
     public static JComboBox acInput;
     public static JComboBox dateInput;
 
+
     public JPanel commodityNew(){
 
         SpringLayout springLayout=new SpringLayout();
         commodityNew=new JPanel(springLayout);
         commodityNew.setBackground(Color.WHITE);
+
 
         JLabel exit=new JLabel("×",SwingConstants.CENTER);
         exit.setFont(Fonts.getSymbolHmax());
@@ -46,11 +50,25 @@ public class CommodityNewPanel {
         commoditySearchNew.setBackground(Color.WHITE);
         commoditySearchNew.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*12/100));
 
-        FlowLayout flowLayout=new FlowLayout();
-        flowLayout.setHgap(ScreenSize.scr_width*3/100);
-        selectionA=new JPanel(flowLayout);
+
+        //分类面板A
+        FlowLayout flowLayoutA=new FlowLayout();
+        flowLayoutA.setHgap(ScreenSize.scr_width*3/100); //设置面板组件横向边距
+        selectionA=new JPanel(flowLayoutA);
         selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
         selectionA.setBackground(Color.PINK);
+
+        FlowLayout flowLayoutB=new FlowLayout();
+        flowLayoutB.setHgap(ScreenSize.scr_width*3/100);
+        selectionB=new JPanel(flowLayoutB);
+        selectionB.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
+        selectionB.setBackground(Color.GREEN);
+
+        FlowLayout flowLayoutC=new FlowLayout();
+        flowLayoutC.setHgap(ScreenSize.scr_width*3/100);
+        selectionC=new JPanel(flowLayoutC);
+        selectionC.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
+        selectionC.setBackground(Color.YELLOW);
 
         JLabel name=new JLabel("商品名称:",SwingConstants.CENTER);
         name.setFont(Fonts.getFontStandard());
@@ -115,6 +133,8 @@ public class CommodityNewPanel {
         commodityNew.add(commodityNewRightLabel);
         commodityNew.add(commoditySearchNew);
         commodityNew.add(selectionA);
+        commodityNew.add(selectionB);
+        commodityNew.add(selectionC);
         commodityNew.add(name);
         commodityNew.add(nameInput);
         commodityNew.add(brand);
@@ -146,10 +166,18 @@ public class CommodityNewPanel {
         springLayout.putConstraint(SpringLayout.WEST,selectionA,0,SpringLayout.WEST,commodityNew);
         springLayout.putConstraint(SpringLayout.EAST,selectionA,0,SpringLayout.WEST,commodityNewRightLabel);
 
-        springLayout.putConstraint(SpringLayout.NORTH,brand,ScreenSize.scr_height*2/100,SpringLayout.SOUTH,selectionA);
+        springLayout.putConstraint(SpringLayout.NORTH,selectionB,0,SpringLayout.SOUTH,selectionA);
+        springLayout.putConstraint(SpringLayout.WEST,selectionB,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.EAST,selectionB,0,SpringLayout.WEST,commodityNewRightLabel);
+
+        springLayout.putConstraint(SpringLayout.NORTH,selectionC,0,SpringLayout.SOUTH,selectionB);
+        springLayout.putConstraint(SpringLayout.WEST,selectionC,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.EAST,selectionC,0,SpringLayout.WEST,commodityNewRightLabel);
+
+        springLayout.putConstraint(SpringLayout.NORTH,brand,ScreenSize.scr_height*2/100,SpringLayout.SOUTH,selectionC);
         springLayout.putConstraint(SpringLayout.WEST,brand,0,SpringLayout.WEST,commodityNew);
 
-        springLayout.putConstraint(SpringLayout.NORTH,brandInput,ScreenSize.scr_height*2/100,SpringLayout.SOUTH,selectionA);
+        springLayout.putConstraint(SpringLayout.NORTH,brandInput,ScreenSize.scr_height*2/100,SpringLayout.SOUTH,selectionC);
         springLayout.putConstraint(SpringLayout.WEST,brandInput,0,SpringLayout.EAST,brand);
         springLayout.putConstraint(SpringLayout.EAST,brandInput,-ScreenSize.scr_width*3/100,SpringLayout.WEST,commodityNewRightLabel);
 
@@ -206,9 +234,23 @@ public class CommodityNewPanel {
                 JLayeredView.jLayeredView.add(JLayeredView.commodityViewPanel,Integer.valueOf(500));
                 JLayeredView.jLayeredView.add(JLayeredView.light,Integer.valueOf(400));
 
-                CommodityNewPanel.commoditySearchNew.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*12/100));
+                commoditySearchNew.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*12/100));
+                selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
+                selectionB.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
+                selectionC.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
+
                 CommodityNewPanel.commoditySearchNew.updateUI();
                 CommoditySearchNew.commodityNewTextField.setText(null);
+                brandInput.removeAllItems();
+                nameInput.removeAllItems();
+                aaInput.removeAllItems();
+                abInput.removeAllItems();
+                acInput.removeAllItems();
+                originInput.removeAllItems();
+                dateInput.removeAllItems();
+                selectionA.removeAll();
+                selectionB.removeAll();
+                selectionC.removeAll();
             }
         });
 

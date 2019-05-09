@@ -3,6 +3,7 @@ package views.jlayeredItem;
 
 import item.Fonts;
 import item.ScreenSize;
+import views.jlayeredCommodity.CommodityNewPanel;
 import views.jlayeredCommodity.commodityNew.CommodityInfo;
 
 
@@ -64,6 +65,7 @@ public class CommoditySearchNew {
             public void insertUpdate(DocumentEvent e) {
 
                 list.clear();
+
                 try {
                     Document document=e.getDocument();
                     String insertText=document.getText(0,document.getLength());  //获取文本内容

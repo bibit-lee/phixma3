@@ -2,6 +2,8 @@ package views.jlayeredCommodity.commodityNew;
 
 
 import item.Fonts;
+import views.jlayeredCommodity.CommodityNewPanel;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -21,7 +23,7 @@ public class CommodityNewSelectionLabelA {
         commodityNewSelectionLabelA.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         List<String> list = new ArrayList<>();
-
+        CommodityNewIsSelectedLabel cNsl=new CommodityNewIsSelectedLabel();
 
         commodityNewSelectionLabelA.addMouseListener(new MouseAdapter() {
             @Override
@@ -56,6 +58,9 @@ public class CommodityNewSelectionLabelA {
                 ci.getCommodityInfo(a);
 
 
+                JLabel commodityNewIsSelectedLabel=cNsl.getLabel();
+                commodityNewIsSelectedLabel.setText(selectAStr);
+                CommodityNewPanel.searchResult.add(commodityNewIsSelectedLabel);
 
             }
         });

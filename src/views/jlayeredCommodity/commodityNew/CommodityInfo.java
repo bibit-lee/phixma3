@@ -5,7 +5,6 @@ import item.Conn;
 import item.Fonts;
 import item.ScreenSize;
 import views.jlayeredCommodity.CommodityNewPanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
@@ -108,7 +107,7 @@ public class CommodityInfo {
                 CommodityNewPanel.selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
 
             } else if (signASum<1){  //如果数据集没有数据，则提示重新搜索
-                CommodityNewPanel.selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
+                CommodityNewPanel.selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
                 JLabel noResult=new JLabel("请更换关键字重新搜索  或  自行手动添加");
                 noResult.setFont(Fonts.getFontStandard());
                 noResult.setOpaque(true);

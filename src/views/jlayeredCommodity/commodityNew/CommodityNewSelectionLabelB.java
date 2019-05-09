@@ -2,12 +2,14 @@ package views.jlayeredCommodity.commodityNew;
 
 
 import item.Fonts;
+import views.jlayeredCommodity.CommodityNewPanel;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.*;
 
 public class CommodityNewSelectionLabelB {
 
@@ -17,6 +19,9 @@ public class CommodityNewSelectionLabelB {
         commodityNewSelectionLabelB=new JLabel();
         commodityNewSelectionLabelB.setFont(Fonts.getFontStandard());
         commodityNewSelectionLabelB.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        java.util.List<String> list = new ArrayList<>();
+        CommodityNewIsSelectedLabel cNsl=new CommodityNewIsSelectedLabel();
 
         commodityNewSelectionLabelB.addMouseListener(new MouseAdapter() {
             @Override
@@ -36,7 +41,22 @@ public class CommodityNewSelectionLabelB {
             @Override
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
-                System.out.println("123");
+                String selectBStr=commodityNewSelectionLabelB.getText();
+
+                list.add("AND classifyDescribe LIKE "+"'%"+selectBStr+"%'");
+                int x=0;
+                String a=" ";
+                while (x<list.size()){
+                    a += list.get(x);  //拼接集合的所有元素
+                    x++;
+                }
+
+                CommodityInfo ci=new CommodityInfo();
+                ci.getCommodityInfo(a);
+
+                JLabel commodityNewIsSelectedLabel=cNsl.getLabel();
+                commodityNewIsSelectedLabel.setText(selectBStr);
+                CommodityNewPanel.searchResult.add(commodityNewIsSelectedLabel);
             }
         });
 

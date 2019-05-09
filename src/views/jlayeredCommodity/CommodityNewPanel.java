@@ -51,32 +51,55 @@ public class CommodityNewPanel {
         commoditySearchNew.setBackground(Color.WHITE);
         commoditySearchNew.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*12/100));
 
-        //搜索结果面板
-        FlowLayout flowLayoutResult=new FlowLayout();
-        flowLayoutResult.setHgap(ScreenSize.scr_width*3/100); //设置面板组件横向边距
-        searchResult=new JPanel(flowLayoutResult);
-        searchResult.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
-        searchResult.setBackground(Color.PINK);
+
+
+        JLabel selectNameA=new JLabel("分类A:",SwingConstants.CENTER);
+        selectNameA.setFont(Fonts.getFontStandard());
+        selectNameA.setOpaque(true);
+        selectNameA.setPreferredSize(new Dimension(ScreenSize.scr_width*5/100,0));
+
+        JLabel selectNameB=new JLabel("分类B:",SwingConstants.CENTER);
+        selectNameB.setFont(Fonts.getFontStandard());
+        selectNameB.setOpaque(true);
+        selectNameB.setPreferredSize(new Dimension(ScreenSize.scr_width*5/100,0));
+
+
+        JLabel selectNameC=new JLabel("分类C:",SwingConstants.CENTER);
+        selectNameC.setFont(Fonts.getFontStandard());
+        selectNameC.setOpaque(true);
+        selectNameC.setPreferredSize(new Dimension(ScreenSize.scr_width*5/100,0));
+
+
+        JLabel selectResultName=new JLabel("搜索结果 >",SwingConstants.CENTER);
+        selectResultName.setFont(Fonts.getFontH5Standard());
+        selectResultName.setPreferredSize(new Dimension(ScreenSize.scr_width*5/100,0));
 
 
         //分类面板A
         FlowLayout flowLayoutA=new FlowLayout();
         flowLayoutA.setHgap(ScreenSize.scr_width*3/100); //设置面板组件横向边距
         selectionA=new JPanel(flowLayoutA);
-        selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
-
+        selectionA.setBackground(Color.WHITE);
+        selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*35/100,0));
 
         FlowLayout flowLayoutB=new FlowLayout();
         flowLayoutB.setHgap(ScreenSize.scr_width*3/100);
         selectionB=new JPanel(flowLayoutB);
-        selectionB.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
-
+        selectionB.setBackground(Color.WHITE);
+        selectionB.setPreferredSize(new Dimension(ScreenSize.scr_width*35/100,0));
 
         FlowLayout flowLayoutC=new FlowLayout();
         flowLayoutC.setHgap(ScreenSize.scr_width*3/100);
         selectionC=new JPanel(flowLayoutC);
-        selectionC.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
+        selectionC.setBackground(Color.WHITE);
+        selectionC.setPreferredSize(new Dimension(ScreenSize.scr_width*35/100,0));
 
+        //搜索结果面板
+        FlowLayout flowLayoutResult=new FlowLayout();
+        flowLayoutResult.setHgap(ScreenSize.scr_width*3/100); //设置面板组件横向边距
+        searchResult=new JPanel(flowLayoutResult);
+        searchResult.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
+        searchResult.setBackground(Color.WHITE);
 
         JLabel name=new JLabel("商品名称:",SwingConstants.CENTER);
         name.setFont(Fonts.getFontStandard());
@@ -140,10 +163,14 @@ public class CommodityNewPanel {
         commodityNew.add(exit);
         commodityNew.add(commodityNewRightLabel);
         commodityNew.add(commoditySearchNew);
-        commodityNew.add(searchResult);
+        commodityNew.add(selectNameA);
+        commodityNew.add(selectNameB);
+        commodityNew.add(selectNameC);
+        commodityNew.add(selectResultName);
         commodityNew.add(selectionA);
         commodityNew.add(selectionB);
         commodityNew.add(selectionC);
+        commodityNew.add(searchResult);
         commodityNew.add(name);
         commodityNew.add(nameInput);
         commodityNew.add(brand);
@@ -171,26 +198,42 @@ public class CommodityNewPanel {
         springLayout.putConstraint(SpringLayout.WEST,commoditySearchNew,0,SpringLayout.WEST,commodityNew);
         springLayout.putConstraint(SpringLayout.EAST,commoditySearchNew,0,SpringLayout.WEST,commodityNewRightLabel);
 
-        springLayout.putConstraint(SpringLayout.NORTH,searchResult,0,SpringLayout.SOUTH,commoditySearchNew);
-        springLayout.putConstraint(SpringLayout.WEST,searchResult,0,SpringLayout.WEST,commodityNew);
-        springLayout.putConstraint(SpringLayout.EAST,searchResult,0,SpringLayout.WEST,commodityNewRightLabel);
-
-        springLayout.putConstraint(SpringLayout.NORTH,selectionA,0,SpringLayout.SOUTH,searchResult);
-        springLayout.putConstraint(SpringLayout.WEST,selectionA,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.NORTH,selectionA,0,SpringLayout.SOUTH,commoditySearchNew);
+        springLayout.putConstraint(SpringLayout.WEST,selectionA,0,SpringLayout.EAST,selectNameA);
         springLayout.putConstraint(SpringLayout.EAST,selectionA,0,SpringLayout.WEST,commodityNewRightLabel);
 
+        springLayout.putConstraint(SpringLayout.NORTH,selectNameA,0,SpringLayout.SOUTH,commoditySearchNew);
+        springLayout.putConstraint(SpringLayout.WEST,selectNameA,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.SOUTH,selectNameA,0,SpringLayout.SOUTH,selectionA);
+
         springLayout.putConstraint(SpringLayout.NORTH,selectionB,0,SpringLayout.SOUTH,selectionA);
-        springLayout.putConstraint(SpringLayout.WEST,selectionB,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.WEST,selectionB,0,SpringLayout.EAST,selectNameB);
         springLayout.putConstraint(SpringLayout.EAST,selectionB,0,SpringLayout.WEST,commodityNewRightLabel);
 
+        springLayout.putConstraint(SpringLayout.NORTH,selectNameB,0,SpringLayout.SOUTH,selectNameA);
+        springLayout.putConstraint(SpringLayout.WEST,selectNameB,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.SOUTH,selectNameB,0,SpringLayout.SOUTH,selectionB);
+
         springLayout.putConstraint(SpringLayout.NORTH,selectionC,0,SpringLayout.SOUTH,selectionB);
-        springLayout.putConstraint(SpringLayout.WEST,selectionC,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.WEST,selectionC,0,SpringLayout.EAST,selectNameC);
         springLayout.putConstraint(SpringLayout.EAST,selectionC,0,SpringLayout.WEST,commodityNewRightLabel);
 
-        springLayout.putConstraint(SpringLayout.NORTH,brand,ScreenSize.scr_height*2/100,SpringLayout.SOUTH,selectionC);
+        springLayout.putConstraint(SpringLayout.NORTH,selectNameC,0,SpringLayout.SOUTH,selectNameB);
+        springLayout.putConstraint(SpringLayout.WEST,selectNameC,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.SOUTH,selectNameC,0,SpringLayout.SOUTH,selectionC);
+
+        springLayout.putConstraint(SpringLayout.NORTH,searchResult,0,SpringLayout.SOUTH,selectionC);
+        springLayout.putConstraint(SpringLayout.WEST,searchResult,0,SpringLayout.EAST,selectResultName);
+        springLayout.putConstraint(SpringLayout.EAST,searchResult,0,SpringLayout.WEST,commodityNewRightLabel);
+
+        springLayout.putConstraint(SpringLayout.NORTH,selectResultName,0,SpringLayout.SOUTH,selectNameC);
+        springLayout.putConstraint(SpringLayout.WEST,selectResultName,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.SOUTH,selectResultName,0,SpringLayout.SOUTH,searchResult);
+
+        springLayout.putConstraint(SpringLayout.NORTH,brand,ScreenSize.scr_height*2/100,SpringLayout.SOUTH,searchResult);
         springLayout.putConstraint(SpringLayout.WEST,brand,0,SpringLayout.WEST,commodityNew);
 
-        springLayout.putConstraint(SpringLayout.NORTH,brandInput,ScreenSize.scr_height*2/100,SpringLayout.SOUTH,selectionC);
+        springLayout.putConstraint(SpringLayout.NORTH,brandInput,ScreenSize.scr_height*2/100,SpringLayout.SOUTH,searchResult);
         springLayout.putConstraint(SpringLayout.WEST,brandInput,0,SpringLayout.EAST,brand);
         springLayout.putConstraint(SpringLayout.EAST,brandInput,-ScreenSize.scr_width*3/100,SpringLayout.WEST,commodityNewRightLabel);
 

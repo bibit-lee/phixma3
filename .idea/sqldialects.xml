@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/src/titles/MainTitle.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/tops/TopAdvert.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/views/jlayeredCommodity/CommodityDetailPanel.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/views/jlayeredCommodity/commodityNew/CommodityInfo.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/views/jlayeredCommodity/commodityNew/CommodityNewSelectionLabelA.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/views/jlayeredCommodity/commoditySet/DisPlayColumn.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/views/jlayeredItem/CommoditySearchField.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/views/jlayeredItem/CommoditySearchFieldOption.java" dialect="MySQL" />

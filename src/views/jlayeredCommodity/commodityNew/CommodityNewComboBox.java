@@ -2,9 +2,6 @@ package views.jlayeredCommodity.commodityNew;
 
 
 import item.Fonts;
-import views.jlayeredCommodity.CommodityNewPanel;
-import views.jlayeredItem.CommoditySearchNew;
-
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.awt.*;
@@ -16,13 +13,11 @@ import java.awt.event.ItemListener;
 
 public class CommodityNewComboBox {
 
-    public static JLabel comboBoxLabel;
-
     public JComboBox commodityNewComboBox(){
 
-        JComboBox<String> commodityNewComboBox;
+        JComboBox commodityNewComboBox;
 
-        commodityNewComboBox=new JComboBox<String>();
+        commodityNewComboBox=new JComboBox();
         commodityNewComboBox.setFont(Fonts.getFontH2Bold());
         commodityNewComboBox.setEditable(true);  //设置下拉框可编辑
         commodityNewComboBox.setBorder(BorderFactory.createLineBorder(new Color(148,148,148)));

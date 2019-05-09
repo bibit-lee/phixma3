@@ -15,16 +15,17 @@ import java.awt.event.MouseEvent;
 public class CommodityNewPanel {
     public static JPanel commodityNew;
     public static JPanel commoditySearchNew;
+    public static JPanel searchResult;
     public static JPanel selectionA;
     public static JPanel selectionB;
     public static JPanel selectionC;
-    public static JComboBox nameInput;
-    public static JComboBox brandInput;
-    public static JComboBox originInput;
-    public static JComboBox aaInput;
-    public static JComboBox abInput;
-    public static JComboBox acInput;
-    public static JComboBox dateInput;
+    public static JComboBox<String> nameInput;
+    public static JComboBox<String> brandInput;
+    public static JComboBox<String> originInput;
+    public static JComboBox<String> aaInput;
+    public static JComboBox<String> abInput;
+    public static JComboBox<String> acInput;
+    public static JComboBox<String> dateInput;
 
 
     public JPanel commodityNew(){
@@ -50,25 +51,31 @@ public class CommodityNewPanel {
         commoditySearchNew.setBackground(Color.WHITE);
         commoditySearchNew.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*12/100));
 
+        //搜索结果面板
+        FlowLayout flowLayoutResult=new FlowLayout();
+        flowLayoutResult.setHgap(ScreenSize.scr_width*3/100); //设置面板组件横向边距
+        searchResult=new JPanel(flowLayoutResult);
+        searchResult.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
+
 
         //分类面板A
         FlowLayout flowLayoutA=new FlowLayout();
         flowLayoutA.setHgap(ScreenSize.scr_width*3/100); //设置面板组件横向边距
         selectionA=new JPanel(flowLayoutA);
         selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
-        selectionA.setBackground(Color.PINK);
+
 
         FlowLayout flowLayoutB=new FlowLayout();
         flowLayoutB.setHgap(ScreenSize.scr_width*3/100);
         selectionB=new JPanel(flowLayoutB);
         selectionB.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
-        selectionB.setBackground(Color.GREEN);
+
 
         FlowLayout flowLayoutC=new FlowLayout();
         flowLayoutC.setHgap(ScreenSize.scr_width*3/100);
         selectionC=new JPanel(flowLayoutC);
         selectionC.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
-        selectionC.setBackground(Color.YELLOW);
+
 
         JLabel name=new JLabel("商品名称:",SwingConstants.CENTER);
         name.setFont(Fonts.getFontStandard());
@@ -132,6 +139,7 @@ public class CommodityNewPanel {
         commodityNew.add(exit);
         commodityNew.add(commodityNewRightLabel);
         commodityNew.add(commoditySearchNew);
+        commodityNew.add(searchResult);
         commodityNew.add(selectionA);
         commodityNew.add(selectionB);
         commodityNew.add(selectionC);
@@ -158,11 +166,15 @@ public class CommodityNewPanel {
         springLayout.putConstraint(SpringLayout.NORTH,commodityNewRightLabel,0,SpringLayout.SOUTH,exit);
         springLayout.putConstraint(SpringLayout.EAST,commodityNewRightLabel,-ScreenSize.scr_width*3/100,SpringLayout.EAST,commodityNew);
 
-        springLayout.putConstraint(SpringLayout.NORTH,commoditySearchNew,0,SpringLayout.SOUTH,exit);
+        springLayout.putConstraint(SpringLayout.NORTH,commoditySearchNew,0,SpringLayout.NORTH,commodityNew);
         springLayout.putConstraint(SpringLayout.WEST,commoditySearchNew,0,SpringLayout.WEST,commodityNew);
         springLayout.putConstraint(SpringLayout.EAST,commoditySearchNew,0,SpringLayout.WEST,commodityNewRightLabel);
 
-        springLayout.putConstraint(SpringLayout.NORTH,selectionA,0,SpringLayout.SOUTH,commoditySearchNew);
+        springLayout.putConstraint(SpringLayout.NORTH,searchResult,0,SpringLayout.SOUTH,commoditySearchNew);
+        springLayout.putConstraint(SpringLayout.WEST,searchResult,0,SpringLayout.WEST,commodityNew);
+        springLayout.putConstraint(SpringLayout.EAST,searchResult,0,SpringLayout.WEST,commodityNewRightLabel);
+
+        springLayout.putConstraint(SpringLayout.NORTH,selectionA,0,SpringLayout.SOUTH,searchResult);
         springLayout.putConstraint(SpringLayout.WEST,selectionA,0,SpringLayout.WEST,commodityNew);
         springLayout.putConstraint(SpringLayout.EAST,selectionA,0,SpringLayout.WEST,commodityNewRightLabel);
 

@@ -55,7 +55,8 @@ public class CommodityNewPanel {
         FlowLayout flowLayoutResult=new FlowLayout();
         flowLayoutResult.setHgap(ScreenSize.scr_width*3/100); //设置面板组件横向边距
         searchResult=new JPanel(flowLayoutResult);
-        searchResult.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
+        searchResult.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
+        searchResult.setBackground(Color.PINK);
 
 
         //分类面板A
@@ -260,6 +261,7 @@ public class CommodityNewPanel {
                 acInput.removeAllItems();
                 originInput.removeAllItems();
                 dateInput.removeAllItems();
+                searchResult.removeAll();
                 selectionA.removeAll();
                 selectionB.removeAll();
                 selectionC.removeAll();

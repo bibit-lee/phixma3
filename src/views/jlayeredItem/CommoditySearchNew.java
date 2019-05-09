@@ -1,14 +1,10 @@
 package views.jlayeredItem;
 
 
-import item.Conn;
 import item.Fonts;
 import item.ScreenSize;
-import views.jlayeredCommodity.CommodityNewPanel;
 import views.jlayeredCommodity.commodityNew.CommodityInfo;
-import views.jlayeredCommodity.commodityNew.CommodityNewSelectionLabelA;
-import views.jlayeredCommodity.commodityNew.CommodityNewSelectionLabelB;
-import views.jlayeredCommodity.commodityNew.CommodityNewSelectionLabelC;
+
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -18,7 +14,6 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import java.awt.*;
-import java.sql.Connection;
 import java.util.*;
 import java.util.List;
 
@@ -57,7 +52,7 @@ public class CommoditySearchNew {
         commodityNewTextField.setBounds(ScreenSize.scr_width*5/100, ScreenSize.scr_height*5/100, ScreenSize.scr_width*30/100, ScreenSize.scr_height*5/100);  //设置文本输入框尺寸，尽量以120的倍数建立
 
         commoditySearchNew.add(commodityNewTextField);
-
+        List<String> list = new ArrayList<>();
 
 
 
@@ -67,50 +62,8 @@ public class CommoditySearchNew {
             @Override
             //文本插入时执行
             public void insertUpdate(DocumentEvent e) {
-                Conn waiBu=new Conn();
-                Connection con=waiBu.getCon1();
-
-                List<String> list = new ArrayList<>();
-                HashSet<String>signASet=new HashSet<>();
-                HashSet<String> signBSet=new HashSet<>();
-                HashSet<String> signCSet=new HashSet<>();
-                HashSet<String> brandSet=new HashSet<>();
-                HashSet<String> tradeNameSet=new HashSet<>();
-                HashSet<String> attributeASet=new HashSet<>();
-                HashSet<String> attributeBSet=new HashSet<>();
-                HashSet<String> attributeCSet=new HashSet<>();
-                HashSet<String> originSet=new HashSet<>();
-                HashSet<String> dateSet=new HashSet<>();
-
-                CommodityNewSelectionLabelA cNslA=new CommodityNewSelectionLabelA(); //实例化分类A标签模板
-                CommodityNewSelectionLabelB cNslB=new CommodityNewSelectionLabelB();
-                CommodityNewSelectionLabelC cNslC=new CommodityNewSelectionLabelC();
 
                 list.clear();
-                signASet.clear();
-                signBSet.clear();
-                signCSet.clear();
-                brandSet.clear();
-                tradeNameSet.clear();
-                attributeASet.clear();
-                attributeBSet.clear();
-                attributeCSet.clear();
-                originSet.clear();
-                dateSet.clear();
-
-                CommodityNewPanel.searchResult.removeAll();
-                CommodityNewPanel.selectionA.removeAll();
-                CommodityNewPanel.selectionB.removeAll();
-                CommodityNewPanel.selectionC.removeAll();
-                CommodityNewPanel.brandInput.removeAllItems();
-                CommodityNewPanel.nameInput.removeAllItems();
-                CommodityNewPanel.originInput.removeAllItems();
-                CommodityNewPanel.dateInput.removeAllItems();
-                CommodityNewPanel.aaInput.removeAllItems();
-                CommodityNewPanel.abInput.removeAllItems();
-                CommodityNewPanel.acInput.removeAllItems();
-
-
                 try {
                     Document document=e.getDocument();
                     String insertText=document.getText(0,document.getLength());  //获取文本内容
@@ -135,9 +88,7 @@ public class CommoditySearchNew {
                     }
 
                     CommodityInfo ci=new CommodityInfo();
-                    ci.getCommodityInfo(a, con, signASet,signBSet, signCSet, brandSet, tradeNameSet, attributeASet,
-                            attributeBSet, attributeCSet, originSet, dateSet, cNslA, cNslB, cNslC);
-
+                    ci.getCommodityInfo(a);
 
 
 

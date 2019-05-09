@@ -1,6 +1,7 @@
 package views.jlayeredCommodity.commodityNew;
 
 
+import item.Conn;
 import item.Fonts;
 import item.ScreenSize;
 import views.jlayeredCommodity.CommodityNewPanel;
@@ -15,13 +16,49 @@ import java.util.*;
 public class CommodityInfo {
 
 
-    public void getCommodityInfo(String a, Connection con, HashSet<String> signASet, HashSet<String> signBSet,
-                                 HashSet<String> signCSet, HashSet<String> brandSet, HashSet<String> tradeNameSet,
-                                 HashSet<String> attributeASet, HashSet<String> attributeBSet, HashSet<String> attributeCSet,
-                                 HashSet<String> originSet, HashSet<String> dateSet, CommodityNewSelectionLabelA cNslA,
-                                 CommodityNewSelectionLabelB cNslB, CommodityNewSelectionLabelC cNslC){
+    public void getCommodityInfo(String a){
+
+        Conn waiBu=new Conn();
+        Connection con=waiBu.getCon1();
+
+        HashSet<String> signASet=new HashSet<>();
+        HashSet<String> signBSet=new HashSet<>();
+        HashSet<String> signCSet=new HashSet<>();
+        HashSet<String> brandSet=new HashSet<>();
+        HashSet<String> tradeNameSet=new HashSet<>();
+        HashSet<String> attributeASet=new HashSet<>();
+        HashSet<String> attributeBSet=new HashSet<>();
+        HashSet<String> attributeCSet=new HashSet<>();
+        HashSet<String> originSet=new HashSet<>();
+        HashSet<String> dateSet=new HashSet<>();
+
+        CommodityNewSelectionLabelA cNslA=new CommodityNewSelectionLabelA(); //实例化分类A标签模板
+        CommodityNewSelectionLabelB cNslB=new CommodityNewSelectionLabelB();
+        CommodityNewSelectionLabelC cNslC=new CommodityNewSelectionLabelC();
 
 
+        signASet.clear();
+        signBSet.clear();
+        signCSet.clear();
+        brandSet.clear();
+        tradeNameSet.clear();
+        attributeASet.clear();
+        attributeBSet.clear();
+        attributeCSet.clear();
+        originSet.clear();
+        dateSet.clear();
+
+        CommodityNewPanel.searchResult.removeAll();
+        CommodityNewPanel.selectionA.removeAll();
+        CommodityNewPanel.selectionB.removeAll();
+        CommodityNewPanel.selectionC.removeAll();
+        CommodityNewPanel.brandInput.removeAllItems();
+        CommodityNewPanel.nameInput.removeAllItems();
+        CommodityNewPanel.originInput.removeAllItems();
+        CommodityNewPanel.dateInput.removeAllItems();
+        CommodityNewPanel.aaInput.removeAllItems();
+        CommodityNewPanel.abInput.removeAllItems();
+        CommodityNewPanel.acInput.removeAllItems();
 
 
 
@@ -29,6 +66,7 @@ public class CommodityInfo {
         try{  //把文本框输入的内容拆分搜索
             Statement statement=con.createStatement();
             String sqlBasic="SELECT * FROM commodity WHERE 1=1 ";
+
             String sql=sqlBasic+a;
             ResultSet clientSearch=statement.executeQuery(sql);
             while (clientSearch.next()){
@@ -65,23 +103,19 @@ public class CommodityInfo {
             int attribureBSum=attributeBSet.size();
             int attributeCSum=attributeCSet.size();
 
-            if (signASum==0){
-                CommodityNewPanel.searchResult.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
+
+            if (signASum>1){  //如果数据集只有一个数据，则不显示选择框
+                CommodityNewPanel.selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
+
+            } else if (signASum<1){  //如果数据集没有数据，则提示重新搜索
+                CommodityNewPanel.selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
                 JLabel noResult=new JLabel("请更换关键字重新搜索  或  自行手动添加");
                 noResult.setFont(Fonts.getFontStandard());
                 noResult.setOpaque(true);
                 CommodityNewPanel.searchResult.add(noResult);
-            }else {
 
-            }
-
-
-            if (signASum>=1){  //如果数据集只有一个数据，则不显示选择框
-                CommodityNewPanel.selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
-
-            }else{  //如果数据集没有数据，则提示重新搜索
-                CommodityNewPanel.selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,ScreenSize.scr_height*5/100));
-
+            }else if (signASum==1){
+                CommodityNewPanel.selectionA.setPreferredSize(new Dimension(ScreenSize.scr_width*40/100,0));
             }
 
 
